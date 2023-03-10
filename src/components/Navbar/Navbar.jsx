@@ -7,7 +7,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { useSelector } from 'react-redux';
-import { isLogin } from 'redux/auth/auth-selectors';
+import { isUserLogin } from 'redux/auth/auth-selectors';
 const NavbaR = () => {
     const elements = items.map(({ id, text, link }) => (
       //   <NavItem key={id}>
@@ -20,19 +20,18 @@ const NavbaR = () => {
             {/* <Nav.Link to={link}>{text}</Nav.Link> */}
             <Ref to={link}> {text} </Ref>
           </Nav>
+          
         </Container>
+        
+        
       </Navbar>
     ));
-
+const isLogin = useSelector(isUserLogin)
     return (
-      
-        <>
-      
-      
-
-      
+      <>
         <NavList>{elements}</NavList>
-        <NavBarUser />
+        {!isLogin && <NavBarAuth />}
+        {isLogin && <NavBarUser />}
       </>
     );
 }

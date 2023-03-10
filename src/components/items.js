@@ -11,15 +11,15 @@ const items = [
     text: 'Contacts',
     link: '/contacts',
   },
-  {
-    id: nanoid(),
-    text: 'Register',
-    link: '/register',
-  },
-  {
-    id: nanoid(),
-    text: 'Login',
-    link: '/login',
-  },
+  // {
+  //   id: nanoid(),
+  //   text: 'Register',
+  //   link: '/register',
+  // },
+  // {
+  //   id: nanoid(),
+  //   text: 'Login',
+  //   link: '/login',
+  // },
 ];
 export default items;

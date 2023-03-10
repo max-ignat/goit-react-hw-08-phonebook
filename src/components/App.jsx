@@ -17,7 +17,8 @@ import {
 } from 'redux/contacts/contacts-operations';
 import Navbar from './Navbar';
 import { lazy,Suspense } from 'react';
-import { Routes , Route} from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 const App = () => {
   const contacts = useSelector(getAllContacts);
@@ -71,6 +72,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/register" element={<RegistrationPage />} />
+
           <Route
             path="/contacts"
             element={

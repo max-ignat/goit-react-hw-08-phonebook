@@ -1,12 +1,12 @@
 import {
   ContactList,
-  Button,
+  // Button,
   Contact,
   ContactData,
   ListTitle,
 } from './Contacts.styled';
 // import PropTypes from 'prop-types';
-
+import { Button } from 'react-bootstrap';
 const Contacts = ({ contacts, onDeleteContact }) => {
 //   console.log(contacts);
   // const contacts = useSelector(state => state.contacts);
@@ -20,10 +20,17 @@ const Contacts = ({ contacts, onDeleteContact }) => {
               <ContactData>
                 {name}: <span> {number} </span>
               </ContactData>
-
-              <Button type="button" onClick={() => onDeleteContact(id)}>
-                delete
+              <Button
+                style={{margin: 10,}}
+                variant="outline-danger"
+                type="button"
+                onClick={() => onDeleteContact(id)}
+              >
+                Danger
               </Button>
+              {/* <Button type="button" onClick={() => onDeleteContact(id)}>
+                delete
+              </Button> */}
             </Contact>
           ))}
         </ContactList>

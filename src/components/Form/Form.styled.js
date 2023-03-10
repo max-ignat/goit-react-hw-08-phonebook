@@ -4,6 +4,7 @@ import styled from "styled-components";
 export const FormInput = styled(Field)`
   border-radius: 10px;
   margin-left: 10px;
+  /* margin-right: 0; */
 `;
 
 export const Error = styled(ErrorMessage)`
@@ -22,7 +23,7 @@ export const Title = styled.h1`
 export const FormWrap = styled(Form)`
   display: flex;
   width: 600px;
-  margin: auto;
+  /* margin-left: 0; */
 
 `;
 
@@ -32,15 +33,18 @@ export const Label = styled.label`
 `;
 
 export const Button = styled.button`
-  margin: auto;
+  /* margin: auto; */
+  margin-left: 0;
   outline: none;
   padding: 0 10px;
-  width: 99px;
-  height: 20px;
+  width: 77px;
+  height: 38px;
+  border-radius:5px;
+  padding: 6px 12px;
   color: #221212;
   background-color: lightgray;
   border: none;
-  border-radius: 2px;
+  /* border-radius: 2px; */
   cursor: pointer;
   &::first-letter {
     text-transform: uppercase;

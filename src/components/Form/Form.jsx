@@ -9,6 +9,7 @@ import {
   FormWrap,
   Error,
 } from './Form.styled';
+// import { Button } from 'react-bootstrap';
 import shortid from 'shortid';
 import * as yup from 'yup';
 
@@ -53,46 +54,54 @@ const Form = ({ submitPropValue }) => {
 
   const { name, number } = state;
   return (
-    <div>
+    <>
       <Title>Phone Book</Title>
-      <Formik validationSchema={schema}>
-        <FormWrap onSubmit={handleSubmit}>
-          <Label htmlFor={nameInputId}>
-            Name
-            <FormInput
-              onChange={handleChange}
-              type="text"
-              name="name"
-              placeholder="  type name"
-              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-              // title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-              value={name}
-              id={nameInputId}
-              required
-            />
-            <Error component="div" name="name" />
-          </Label>
+      <div
+        style={{
+          display: 'flex',
+          alignContent: 'center',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <Formik validationSchema={schema}>
+          <FormWrap onSubmit={handleSubmit}>
+            <Label htmlFor={nameInputId}>
+              Name
+              <FormInput
+                onChange={handleChange}
+                type="text"
+                name="name"
+                placeholder="  type name"
+                pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+                // title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+                value={name}
+                id={nameInputId}
+                required
+              />
+              <Error component="div" name="name" />
+            </Label>
 
-          <Label htmlFor={numberInputId}>
-            Number
-            <FormInput
-              onChange={handleChange}
-              type="tel"
-              name="number"
-              placeholder="  type digits"
-              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-              // title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-              value={number}
-              id={numberInputId}
-              required
-            />
-            <Error component="div" name="number" />
-          </Label>
-
-          <Button type="submit">Add contact</Button>
-        </FormWrap>
-      </Formik>
-    </div>
+            <Label htmlFor={numberInputId}>
+              Number
+              <FormInput
+                onChange={handleChange}
+                type="tel"
+                name="number"
+                placeholder="  type digits"
+                pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+                // title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+                value={number}
+                id={numberInputId}
+                required
+              />
+              <Error component="div" name="number" />
+            </Label>
+            <Button type="submit" > + </Button>
+          </FormWrap>
+        </Formik>
+      </div>
+    </>
   );
 };
 

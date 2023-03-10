@@ -1,5 +1,5 @@
 import items from 'components/items';
-import { NavItem, NavList, Ref } from "./Navbar.styled";
+import {NavList, Ref } from "./Navbar.styled";
 import NavBarUser from './NavBarUser';
 // import { Title } from 'components/Form/Form.styled';
 import NavBarAuth from './NavBarAuth';

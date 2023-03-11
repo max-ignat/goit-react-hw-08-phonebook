@@ -1,11 +1,12 @@
-import { useSelector } from "react-redux"
-import { userName } from "redux/auth/auth-selectors"
+import { useSelector, useDispatch } from "react-redux"
+import { getUser } from "redux/auth/auth-selectors"
 import { Button } from "react-bootstrap";
-
+import { logout } from "redux/auth/auth-operations";
 const NavBarUser = () => {
-    const name = useSelector(userName);
-    // console.log('name', name)
-    const handleLogOut = () => {
+    const name = useSelector(getUser);
+    const dispatch = useDispatch()// console.log('name', name)
+  const handleLogOut = () => {
+      dispatch(logout())
         console.log('Log out done')
         }
     return (
@@ -21,7 +22,7 @@ const NavBarUser = () => {
         }}
       >
         <p style={{ fontSize: 16, fontWeight: 'bold', padding: 10, margin: 0 }}>
-          {' '}
+          
           Welcome, {name}
         </p>
         <Button type="submit" variant="outline-warning" onClick={handleLogOut}>

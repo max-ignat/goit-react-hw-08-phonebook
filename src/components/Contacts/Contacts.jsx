@@ -8,7 +8,7 @@ import {
 // import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 const Contacts = ({ contacts, onDeleteContact }) => {
-//   console.log(contacts);
+  // console.log('contacts', contacts);
   // const contacts = useSelector(state => state.contacts);
   
     return (
@@ -26,7 +26,7 @@ const Contacts = ({ contacts, onDeleteContact }) => {
                 type="button"
                 onClick={() => onDeleteContact(id)}
               >
-                Danger
+                Delete
               </Button>
               {/* <Button type="button" onClick={() => onDeleteContact(id)}>
                 delete

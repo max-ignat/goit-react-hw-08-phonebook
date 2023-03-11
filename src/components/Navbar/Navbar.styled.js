@@ -28,11 +28,11 @@ export const NavList = styled.ul`
   /* display: grid; */
   /* grid-template-columns: repeat(3, 1fr); */
 
-    margin-left: 0;
+  margin-left: 0;
   padding: 10px 15px;
   margin: auto;
   font-size: 20px;
-  background-color: #3f51b5;
+  background-color: #0d6efd;
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 
@@ -46,11 +46,11 @@ export const Ref = styled(NavLink)`
   color: rgba(255, 255, 255, 0.55);
 
   &.active {
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 0.99);
     font-weight: bold;
     /* background-color:red; */
   }
   &:hover {
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 0.99);
   }
 `;

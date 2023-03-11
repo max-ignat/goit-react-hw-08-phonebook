@@ -9,30 +9,30 @@ import Navbar from 'react-bootstrap/Navbar';
 import { useSelector } from 'react-redux';
 import { isUserLogin } from 'redux/auth/auth-selectors';
 const NavbaR = () => {
-    const elements = items.map(({ id, text, link }) => (
+  const isLogin = useSelector(isUserLogin)
+  const filteredItems = !isLogin ? items.filter(item => !item.private) : items;
+    const elements = filteredItems.map(({ id, text, link }) => (
       //   <NavItem key={id}>
       //     <Ref to={link}> {text} </Ref>
       // </NavItem>
 
-      <Navbar bg=" #3f51b5" variant="dark">
+      <Navbar bg=" #3f51b5" variant="dark" key={id}>
         <Container>
-            <Nav className="me-auto" key={id}>
-            {/* <Nav.Link to={link}>{text}</Nav.Link> */}
+          <Nav className="me-auto">
             <Ref to={link}> {text} </Ref>
           </Nav>
-          
         </Container>
-        
-        
       </Navbar>
     ));
-const isLogin = useSelector(isUserLogin)
+
     return (
       <>
         <NavList>{elements}</NavList>
         {!isLogin && <NavBarAuth />}
         {isLogin && <NavBarUser />}
       </>
-    );
+  );
+  
+  
 }
 export default NavbaR;

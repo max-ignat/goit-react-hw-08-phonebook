@@ -1,4 +1,5 @@
 import * as api from '../../services/api';
+// import * as api from '../../services/auth-api'
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const fetchAllContacts = createAsyncThunk(
@@ -6,7 +7,6 @@ export const fetchAllContacts = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const data = await api.getAllContacts();
-      // console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

@@ -10,18 +10,23 @@ import {
   Error,
 } from 'components/Pages/RegistrationPage/RegistrationPage.styled';
 import { Button } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from 'redux/auth/auth-operations';
+import { Navigate } from 'react-router-dom';
+import { isUserLogin } from 'redux/auth/auth-selectors';
+// import { fetchAllContacts } from 'redux/contacts/contacts-operations';
 const schema = yup.object().shape({
   name: yup.string().required('Name is a required field'),
   email: yup.string().email().required('Email is a required field'),
   password: yup.string().required('Password is a required field'),
 });
 
-const LoginPage = ({ onSubmit }) => {
+const LoginPage = () => {
   const [state, setFormState] = useState({
     email: '',
     password: '',
   });
-
+const dispatch = useDispatch();
   const handleChange = ({ target }) => {
     const { name, value } = target;
     setFormState(prevState => {
@@ -31,14 +36,16 @@ const LoginPage = ({ onSubmit }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log('LOG IN FORM',state);
-    // onSubmit(formData);
+    
+    dispatch(login({email, password}));
+    // dispatch(fetchAllContacts());
+    // console.log('LOG IN FORM', state);
 
     reset();
   };
 
   const reset = () => {
-    setFormState({ name: '', email: '', password: '' });
+    setFormState({ email: '', password: '' });
   };
 
   
@@ -46,7 +53,11 @@ const LoginPage = ({ onSubmit }) => {
   const passwordInputId = shortid.generate();
 
   const { email, password } = state;
+const isLogin = useSelector(isUserLogin);
 
+if (isLogin) {
+  return <Navigate to="/contacts" />;
+}
   return (
     <div>
       <Title>Log In </Title>

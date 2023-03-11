@@ -1,11 +1,8 @@
-import React, {  useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Box } from '../App.styled';
 import Form from './Form';
 import Contacts from './Contacts';
 import Filter from './Filter';
-// import Modal from './Modal';
-// import { ModalButton } from './Modal/Modal.styled';
-// import { Title } from './Form/Form.styled';
 import { useSelector, useDispatch } from 'react-redux';
 import { setFilter } from 'redux/filter/filter-slice';
 import { getAllContacts } from 'redux/contacts/contacts-selectors';
@@ -15,34 +12,28 @@ import {
   fetchAddContact,
   fetchDeleteContact,
 } from 'redux/contacts/contacts-operations';
-import Navbar from './Navbar';
-import { lazy,Suspense } from 'react';
+import { current } from 'redux/auth/auth-operations';
+import NavbaR from './Navbar';
+import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { isUserLogin } from 'redux/auth/auth-selectors';
+import PublicRoute from './PublicRoutes';
+import PrivatRoutes from './PrivatRoutes';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 const App = () => {
   const contacts = useSelector(getAllContacts);
   const filter = useSelector(getFilter);
   const dispatch = useDispatch();
-  // const [showModal, setShowModal] = useState(false);
-  // console.log(contacts)
-  // const toggleModal = () => {
-  //   if (showModal) {
-  //     setShowModal(false);
-  //   } else {
-  //     setShowModal(true);
-  //   }
-  // };
+  const isLogin = useSelector(isUserLogin);
+  console.log(isLogin);
   useEffect(() => {
     dispatch(fetchAllContacts());
-  }, [dispatch]);
-  // useEffect(() => {
-  //   window.localStorage.setItem('contacts', JSON.stringify(contacts));
-  // }, [contacts]);
+    dispatch(current());
+  }, [dispatch, isLogin]);
 
   const handleAddContact = ({ name, number }) => {
     dispatch(fetchAddContact({ name, number }));
-    // toggleModal();
   };
 
   const handleDeleteContact = id => {
@@ -52,7 +43,6 @@ const App = () => {
 
   const changeFilter = ({ target }) => {
     dispatch(setFilter(target.value));
-    // setFilter(target.value);
   };
 
   const filteredContacts = () => {
@@ -62,32 +52,37 @@ const App = () => {
     );
   };
   const HomePage = lazy(() => import('./Pages/HomePage/HomePage'));
-  const RegistrationPage = lazy(() => import('./Pages/RegistrationPage/RegistrationPage'));
+  const RegistrationPage = lazy(() =>
+    import('./Pages/RegistrationPage/RegistrationPage')
+  );
   const LoginPage = lazy(() => import('./Pages/LoginPage/LoginPage'));
+
   return (
     <Box>
-      <Navbar></Navbar>
-      {/* <Title>Phone Book</Title> */}
+      <NavbaR></NavbaR>
       <Suspense fallback={<p> wait a sec...</p>}>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/register" element={<RegistrationPage />} />
+          <Route element={<PublicRoute />}>
+            <Route path="/register" element={<RegistrationPage />} />
+            <Route path="/login" element={<LoginPage />} />
+          </Route>
+          <Route element={<PrivatRoutes />}>
+            <Route
+              path="/contacts"
+              element={
+                <>
+                  <Form submitPropValue={handleAddContact} />
 
-          <Route
-            path="/contacts"
-            element={
-              <>
-                <Form submitPropValue={handleAddContact} />
-
-                <Contacts
-                  contacts={filteredContacts()}
-                  onDeleteContact={handleDeleteContact}
-                />
-                <Filter value={filter} onChange={changeFilter} />
-              </>
-            }
-          />
-          <Route path="/login" element={<LoginPage />} />
+                  <Contacts
+                    contacts={filteredContacts()}
+                    onDeleteContact={handleDeleteContact}
+                  />
+                  <Filter value={filter} onChange={changeFilter} />
+                </>
+              }
+            />
+          </Route>
           {/* <ModalButton type="button" onClick={toggleModal}>
           Add contact
         </ModalButton> */}

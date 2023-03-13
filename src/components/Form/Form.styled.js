@@ -4,6 +4,7 @@ import styled from "styled-components";
 export const FormInput = styled(Field)`
   border-radius: 10px;
   margin-left: 10px;
+  height:38px;
   /* margin-right: 0; */
 `;
 
@@ -33,17 +34,17 @@ export const Label = styled.label`
 `;
 
 export const Button = styled.button`
-  /* margin: auto; */
+  margin: 10px auto;
   margin-left: 0;
   outline: none;
-  padding: 0 10px;
-  width: 77px;
+  /* padding: 0 10px; */
+  width: 70px;
   height: 38px;
-  border-radius:5px;
-  padding: 6px 12px;
+  border-radius: 5px;
+  /* padding: 6px 12px; */
   color: #221212;
-  background-color: lightgray;
-  border: none;
+  background-color: white;
+  border: solid black 1px;
   /* border-radius: 2px; */
   cursor: pointer;
   &::first-letter {
@@ -51,7 +52,8 @@ export const Button = styled.button`
   }
   &:hover,
   &:focus {
+    color: white;
     border: 1px solid black;
-    background-color: inherit;
+    background-color: rgb(13, 110, 253);
   }
 `;

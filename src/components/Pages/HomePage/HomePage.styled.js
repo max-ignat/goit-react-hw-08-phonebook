@@ -7,5 +7,4 @@ width: 600px;
 justify-content:center;
 align-items:center;
 margin: auto;
-
 `

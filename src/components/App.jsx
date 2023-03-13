@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Box } from '../App.styled';
+import { Box, MySpinner } from '../App.styled';
 import Form from './Form';
 import Contacts from './Contacts';
 import Filter from './Filter';
@@ -16,16 +16,18 @@ import { current } from 'redux/auth/auth-operations';
 import NavbaR from './Navbar';
 import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { isUserLogin } from 'redux/auth/auth-selectors';
+import {isLoading, isUserLogin } from 'redux/auth/auth-selectors';
 import PublicRoute from './PublicRoutes';
 import PrivatRoutes from './PrivatRoutes';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 const App = () => {
+  
   const contacts = useSelector(getAllContacts);
   const filter = useSelector(getFilter);
   const dispatch = useDispatch();
   const isLogin = useSelector(isUserLogin);
+  
   console.log(isLogin);
   useEffect(() => {
     dispatch(fetchAllContacts());
@@ -57,23 +59,39 @@ const App = () => {
   );
   const LoginPage = lazy(() => import('./Pages/LoginPage/LoginPage'));
 
+  const ifLoading = useSelector(isLoading);
+  if (ifLoading) {
+  return (
+    <MySpinner animation="grow" role="status">
+      <span className="visually-hidden">Loading...</span>
+    </MySpinner>
+  );
+}
+
+
   return (
     <Box>
       <NavbaR></NavbaR>
-      <Suspense fallback={<p> wait a sec...</p>}>
+      <Suspense
+        fallback={
+          <MySpinner animation="grow" role="status" >
+            <span className="visually-hidden">Loading...</span>
+          </MySpinner>
+        }
+      >
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route element={<PublicRoute />}>
             <Route path="/register" element={<RegistrationPage />} />
             <Route path="/login" element={<LoginPage />} />
           </Route>
+
           <Route element={<PrivatRoutes />}>
             <Route
               path="/contacts"
               element={
                 <>
                   <Form submitPropValue={handleAddContact} />
-
                   <Contacts
                     contacts={filteredContacts()}
                     onDeleteContact={handleDeleteContact}
@@ -83,22 +101,6 @@ const App = () => {
               }
             />
           </Route>
-          {/* <ModalButton type="button" onClick={toggleModal}>
-          Add contact
-        </ModalButton> */}
-          {/* {showModal && (
-            <Modal onClose={toggleModal}>
-              <Form submitPropValue={handleAddContact} />
-              <ModalButton type="button" onClick={toggleModal}>
-                minimize
-              </ModalButton>
-            </Modal>
-          )}
-          <Filter value={filter} onChange={changeFilter} />
-          <Contacts
-            contacts={filteredContacts()}
-            onDeleteContact={handleDeleteContact}
-          /> */}
         </Routes>
       </Suspense>
     </Box>

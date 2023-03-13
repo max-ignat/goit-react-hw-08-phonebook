@@ -5,21 +5,24 @@ const HomePage = () => {
   const isLogin = useSelector(isUserLogin);
   const  email  = useSelector(getUserEmail);
   return (
-      <WraperDiv >
-          
+    <WraperDiv>
       {!isLogin ? (
-        <h3 >
-          Welcome! Please login to your account or register to be able to use
-          the contact book
-        </h3>
+        <div style={{}}>
+          <h1 style={{ textAlign: 'center', marginTop: 5 }}>
+            Welcome dear user!
+          </h1>
+          <h2 style={{ fontSize: 18, textAlign: 'center', marginTop: 5 }}>
+            To use all the preferences of our 'Phone Book App' please sign up.
+          </h2>
+        </div>
       ) : (
-        <h3 >
-          Congratulations! You are logged in as{' '}
-          <span >{email}</span>. You have access to all
-          the contacts you saved before, as well as many other options, such as
-          adding new contacts, searching for a contact by name or phone number,
-          and deleting old contacts.
-        </h3>
+        <h2 style={{ fontSize: 18, textAlign: 'center', marginTop: 5 }}>
+          Congratulations! You`ve` logged in as{' '}
+          <span style={{ textDecoration: 'underline', fontSize: 20 }}>
+            {email}
+          </span>
+          . Now you have full acces to your 'Phone Book App'
+        </h2>
       )}
     </WraperDiv>
   );

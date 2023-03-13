@@ -29,6 +29,7 @@ export const NavList = styled.ul`
   /* grid-template-columns: repeat(3, 1fr); */
 
   margin-left: 0;
+  /* margin-top: 50px; */
   padding: 10px 15px;
   margin: auto;
   font-size: 20px;
@@ -38,6 +39,8 @@ export const NavList = styled.ul`
 
   /* list-style: none; */
   display: flex;
+  width: 700px;
+  border-radius: 10px;
 
   /* justify-content: center; */
 `;

@@ -16,8 +16,8 @@ const NavbaR = () => {
       //     <Ref to={link}> {text} </Ref>
       // </NavItem>
 
-      <Navbar bg=" #3f51b5" variant="dark" key={id}>
-        <Container>
+    <Navbar bg=" #3f51b5" variant="dark" key={id} >
+        <Container >
           <Nav className="me-auto">
             <Ref to={link}> {text} </Ref>
           </Nav>
@@ -27,11 +27,13 @@ const NavbaR = () => {
 
     return (
       <>
-        <NavList>{elements}</NavList>
-        {!isLogin && <NavBarAuth />}
-        {isLogin && <NavBarUser />}
+        <NavList style={{ marginTop: 3 }}>
+          {elements}
+          {!isLogin && <NavBarAuth />}
+          {isLogin && <NavBarUser />}
+        </NavList>
       </>
-  );
+    );
   
   
 }

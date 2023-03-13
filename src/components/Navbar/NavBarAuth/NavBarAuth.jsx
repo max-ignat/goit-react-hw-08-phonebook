@@ -2,19 +2,17 @@ import { Link, NavAuthDiv} from './NavBarAuth.styled';
 
 const NavbarAuth = () => {
   return (
-    <NavAuthDiv>
+    <NavAuthDiv style={{ }}>
       <Link to="/register">
-        <p
-          style={{ fontSize: 16, fontWeight: 'bold', padding: 10, margin: 0 }}
-        >Register</p>{' '}
-        
+        <p style={{ fontSize: 16, fontWeight: 'bold', padding: 10, margin: 0 }}>
+          Register
+        </p>{' '}
       </Link>
       |
       <Link to="/login">
-        <p
-          style={{ fontSize: 16, fontWeight: 'bold', padding: 10, margin: 0 }}
-        >Login</p>{' '}
-        
+        <p style={{ fontSize: 16, fontWeight: 'bold', padding: 10, margin: 0 }}>
+          Login
+        </p>{' '}
       </Link>
     </NavAuthDiv>
   );

@@ -23,9 +23,8 @@ export const NavAuthDiv = styled.div`
   justify-content: center;
   align-items: center;
   align-content: center;
-  position: absolute;
-  top: 10px;
-  right: 20px;
+  margin-left:auto;
+ 
         
 `;
 

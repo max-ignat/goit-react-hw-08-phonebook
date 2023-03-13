@@ -1,27 +1,27 @@
-// import { isUserLogin } from 'redux/auth/auth-selectors';
-// import { useSelector } from 'react-redux';
-// import { getUser } from 'redux/auth/auth-selectors';
+import { getUserEmail, isUserLogin } from 'redux/auth/auth-selectors';
+import { useSelector } from 'react-redux';
+import { WraperDiv } from './HomePage.styled';
 const HomePage = () => {
-//   const isLogin = useSelector(isUserLogin);
-//   const  name  = useSelector(getUser);
+  const isLogin = useSelector(isUserLogin);
+  const  email  = useSelector(getUserEmail);
   return (
-      <>
-          <h1>Здрасте</h1>
-      {/* {!isLogin ? (
-        <h1 >
+      <WraperDiv >
+          
+      {!isLogin ? (
+        <h3 >
           Welcome! Please login to your account or register to be able to use
           the contact book
-        </h1>
+        </h3>
       ) : (
-        <h1 >
+        <h3 >
           Congratulations! You are logged in as{' '}
-          <span >{name}</span>. You have access to all
+          <span >{email}</span>. You have access to all
           the contacts you saved before, as well as many other options, such as
           adding new contacts, searching for a contact by name or phone number,
           and deleting old contacts.
-        </h1>
-      )} */}
-    </>
+        </h3>
+      )}
+    </WraperDiv>
   );
 };
 

@@ -16,13 +16,18 @@ const NavBarUser = () => {
           justifyContent: 'center',
           alignItems: 'center',
           alignContent: 'center',
-          position: 'absolute',
-          top: 10,
-          right: 20,
+         margin: 'auto',
         }}
       >
-        <p style={{ fontSize: 16, fontWeight: 'bold', padding: 10, margin: 0 }}>
-          
+        <p
+          style={{
+            fontSize: 16,
+            fontWeight: 'bold',
+            padding: 10,
+            margin: 0,
+            
+          }}
+        >
           Welcome, {name}
         </p>
         <Button type="submit" variant="outline-warning" onClick={handleLogOut}>

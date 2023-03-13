@@ -11,9 +11,11 @@ export const Label = styled.label`
 width:600px;
 display: flex;
 justify-content: center;
+align-items: center;
 margin: 20px auto;
 `
 export const FilterInput = styled.input`
   border-radius: 10px;
   margin-left: 10px;
+  height: 38px;
 `;

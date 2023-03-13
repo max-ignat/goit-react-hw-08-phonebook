@@ -1,6 +1,6 @@
 import items from 'components/items';
 import {NavList, Ref } from "./Navbar.styled";
-import NavBarUser from './NavBarUser';
+import UserMenu from './UserMenu';
 // import { Title } from 'components/Form/Form.styled';
 import NavBarAuth from './NavBarAuth';
 import Container from 'react-bootstrap/Container';
@@ -30,7 +30,7 @@ const NavbaR = () => {
         <NavList style={{ marginTop: 3 }}>
           {elements}
           {!isLogin && <NavBarAuth />}
-          {isLogin && <NavBarUser />}
+          {isLogin && <UserMenu />}
         </NavList>
       </>
     );

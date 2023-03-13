@@ -3,6 +3,9 @@ import { Spinner } from 'react-bootstrap';
 
 export const Box = styled.div`
 position: relative;
+background-color:azure;
+height: 100vh ;
+
 
 `
 

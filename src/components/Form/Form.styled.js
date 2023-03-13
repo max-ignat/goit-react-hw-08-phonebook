@@ -35,7 +35,7 @@ export const Label = styled.label`
 
 export const Button = styled.button`
   margin: 10px auto;
-  margin-left: 0;
+  margin-left: 5px;
   outline: none;
   /* padding: 0 10px; */
   width: 70px;
@@ -43,7 +43,7 @@ export const Button = styled.button`
   border-radius: 5px;
   /* padding: 6px 12px; */
   color: #221212;
-  background-color: white;
+  background-color: azure;
   border: solid black 1px;
   /* border-radius: 2px; */
   cursor: pointer;

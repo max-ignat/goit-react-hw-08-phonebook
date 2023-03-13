@@ -70,7 +70,7 @@ const App = () => {
 
 
   return (
-    <Box>
+    <Box >
       <NavbaR></NavbaR>
       <Suspense
         fallback={
